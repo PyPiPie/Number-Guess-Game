@@ -1,0 +1,61 @@
+// ConsoleApplication2.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+using namespace std;
+/*void adder(int a, int b){
+	cout << "The sum is:" << a + b<<"\n";
+
+}*/
+
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	start:
+	system("COLOR 5");
+	srand(time(NULL));
+	int guess, answer,lives;
+	lives = 3;
+	answer = rand() % 20;
+	cout << "\nNumber Guessing Game\n" << endl;
+	
+	
+	cout << "Guess a number between 1 and 20:" << endl;
+	incorrect:
+	cin >> guess;
+	if (guess == answer){
+		cout << "Correct!" << endl;
+		goto start;
+
+	}
+	
+	else if (guess > answer){
+		lives -= 1;
+		cout << "Too large                               Guesses:" <<lives<< endl;
+		cout << "Guess again" << endl;
+		if (lives <= 0){
+			cout << "Out of Guesses!\nThe answer was:" << answer << endl;
+			goto start;
+		}
+
+		goto incorrect;
+	}
+	else if (guess < answer){
+		lives -= 1;
+		cout << "Too small                                Guesses:" << lives << endl;
+		cout << "Guess again" << endl;
+		if (lives <= 0){
+			cout << "Out of Guesses!\nThe answer was:" << answer << endl;
+			goto start;
+		}
+
+		goto incorrect;
+	}
+	
+	return 0;
+}
+
